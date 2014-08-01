@@ -19,3 +19,10 @@ You can also dynamically link:
     cc -o test test.o target/libexterntest-bf68444529321665.dylib
 
 However, notice that otool -L will list all the dependencies that dylib invokes.
+
+### Output
+
+    doug-2:rust-extern doug$ ./test
+    110
+
+woo... :P
