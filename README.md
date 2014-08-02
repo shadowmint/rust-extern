@@ -82,16 +82,14 @@ visual studio. Here's a very quick getting started guide:
 
 - Install cargo from the terminal using install.sh
 
-- Use the cmake "MSYS Makefiles" generator:
+- Use the cmake "MSYS Makefiles" generator to build:
 
 
-    cmake .. -G "MSYS Makefiles" 
-    (or use cmake-gui)
+From the MSYS shell:
 
 
-- Now you can proceed as normal:
-
-
+    cd build	
+    cmake .. -G "MSYS Makefiles" (or use cmake-gui)
     make
     ./test.exe
 
