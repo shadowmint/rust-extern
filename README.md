@@ -65,6 +65,10 @@ Output:
     Linking C executable test
     [100%] Built target test
 
+Note that the cmake script to parse this is literally parsing the raw string output
+from cargo. In theory cargo will (eventually) provide some kind of low level support
+for this. 
+
 ### Output of test
 
     doug@wrang:rust-extern doug$ ./test
