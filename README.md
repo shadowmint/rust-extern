@@ -84,13 +84,17 @@ visual studio. Here's a very quick getting started guide:
 
 - Use the cmake "MSYS Makefiles" generator:
 
+
     cmake .. -G "MSYS Makefiles" 
     (or use cmake-gui)
 
+
 - Now you can proceed as normal:
+
 
     make
     ./test.exe
+
 
 ### Output of test
 
