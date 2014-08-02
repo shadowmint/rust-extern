@@ -69,6 +69,29 @@ Note that the cmake script to parse this is literally parsing the raw string out
 from cargo. In theory cargo will (eventually) provide some kind of low level support
 for this. 
 
+#### Building on windows?
+
+Um. Well, it does actually work, but you must use MSYS and GCC not
+visual studio. Here's a very quick getting started guide:
+
+- Install Rust nightly snapshot: http://www.rust-lang.org/install.html
+
+- Install MSYS: http://www.gaia-gis.it/spatialite-3.0.0-BETA/mingw64_how_to.html
+
+- Download the cargo nightly: https://github.com/rust-lang/cargo#installing-cargo-from-nightlies
+
+- Install cargo from the terminal using install.sh
+
+- Use the cmake "MSYS Makefiles" generator:
+
+    cmake .. -G "MSYS Makefiles" 
+    (or use cmake-gui)
+
+- Now you can proceed as normal:
+
+    make
+    ./test.exe
+
 ### Output of test
 
     doug@wrang:rust-extern doug$ ./test
