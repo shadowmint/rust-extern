@@ -25,15 +25,59 @@ So you would run:
 
     cc -o test test.o target/libexterntest-bf68444529321665.a -lSystem -lpthread -lc -lm
 
+On an linux machine it might be:
+
+    cc -o test test.o libexterntest-47c19edaec6ef908.a -ldl -lpthread -lgcc_s -lc -m
+
 You can also dynamically link:
 
     cc -o test test.o target/libexterntest-bf68444529321665.dylib
 
 However, notice that otool -L will list all the dependencies that dylib invokes.
 
-### Output
+### Manually parse cargo output on each platform? 
 
-    doug-2:rust-extern doug$ ./test
-    110
+Isn't that really irritating to do?
+
+Yes.
+
+There are various solutions to parsing the output of cargo and pumping that
+into your build tool; included is a sample cmake (www.cmake.org) file to 
+perform this task automatically.
+
+Usage:
+
+    mkdir build
+    cd build
+    cmake ..
+    make
+
+Output:
+
+    doug@wrang:rust-extern doug$ cmake ..
+    RUST LIBS: /home/doug/dev/rust-extern/target/libexterntest-47c19edaec6ef908.a
+    RUST DEPS: dl;pthread;gcc_s;pthread;c;m
+    -- Configuring done
+    -- Generating done
+    -- Build files have been written to: /home/doug/dev/rust-extern/build
+
+    doug@wrang:rust-extern doug$ make
+    Linking C executable test
+    [100%] Built target test
+
+### Output of test
+
+    doug@wrang:rust-extern doug$ ./test
+    Trigger called
+    Nope
+    Trigger called
+    Invoking callback
+    No callback bound
+    Register called
+    Trigger called
+    Nope
+    Trigger called
+    Invoking callback
+    C-callback invoked with value: 100
 
 woo... :P
