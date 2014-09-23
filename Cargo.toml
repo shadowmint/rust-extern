@@ -3,7 +3,7 @@ name = "externtest"
 version = "0.1.0"
 authors = [ "douglas.linder@gmail.com" ]
 
-[[lib]]
+[lib]
 name = "externtest"
 path = "src/test.rs"
 crate-type = ["dylib", "staticlib"]

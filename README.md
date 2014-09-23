@@ -45,6 +45,8 @@ There are various solutions to parsing the output of cargo and pumping that
 into your build tool; included is a sample cmake (www.cmake.org) file to 
 perform this task automatically.
 
+Notice that this step automatically invokes cargo to build the rust library.
+
 Usage:
 
     mkdir build

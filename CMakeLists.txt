@@ -6,6 +6,7 @@ project(RUST_EXTERN)
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.c)
 
 ## Run cargo build and get output
+execute_process(COMMAND cargo clean WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} OUTPUT_VARIABLE CARGO_STDOUT ERROR_VARIABLE CARGO_STDERR)
 execute_process(COMMAND cargo build WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} OUTPUT_VARIABLE CARGO_STDOUT ERROR_VARIABLE CARGO_STDERR)
 string(REPLACE "\n" ";" CARGO_RESULTS "${CARGO_STDOUT} ${CARGO_STDERR}")
 foreach(CARGO_LINE ${CARGO_RESULTS}) 
@@ -21,6 +22,6 @@ file(GLOB RUST_LIBS ${CMAKE_CURRENT_SOURCE_DIR}/target/*.a)
 ## Finalize...
 message("RUST LIBS: ${RUST_LIBS}")
 message("RUST DEPS: ${RUST_DEPS}")
-add_executable(test ${SOURCES})
-target_link_libraries(test ${RUST_LIBS})
-target_link_libraries(test ${RUST_DEPS})
+add_executable(tests ${SOURCES})
+target_link_libraries(tests ${RUST_LIBS})
+target_link_libraries(tests ${RUST_DEPS})
