@@ -4,7 +4,7 @@ use self::libc::c_int;
 static mut callback:Option<extern fn(c_int)> = None;
 
 #[no_mangle]
-pub fn rs_trigger(val:c_int) {
+pub fn rs_trigger(val:c_int) -> c_int {
   println!("Trigger called");
   if val == 1 {
     println!("Invoking callback");
@@ -22,6 +22,7 @@ pub fn rs_trigger(val:c_int) {
   else {
     println!("Nope");
   }
+  return val + 100;
 }
 
 #[no_mangle]
