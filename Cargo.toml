@@ -1,9 +1,9 @@
 [package]
-name = "externtest"
+name = "extern"
 version = "0.1.0"
 authors = [ "douglas.linder@gmail.com" ]
 
 [lib]
-name = "externtest"
+name = "extern"
 path = "src/test.rs"
 crate-type = ["dylib", "staticlib"]
