@@ -1,5 +1,6 @@
 extern crate libc;
-use self::libc::c_int;
+
+use libc::c_int;
 
 static mut callback:Option<extern fn(c_int)> = None;
 
