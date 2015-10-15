@@ -1,8 +1,16 @@
 extern crate libc;
 
 use libc::c_int;
+use libc::c_char;
 
 static mut callback:Option<extern fn(c_int)> = None;
+
+static VALUE:&'static [u8] = b"Hello World\0";
+
+#[no_mangle]
+pub fn rs_str() -> *const c_char {
+  return VALUE.as_ptr() as *const c_char;
+}
 
 #[no_mangle]
 pub fn rs_trigger(val:c_int) -> c_int {
