@@ -35,14 +35,14 @@ You can also dynamically link:
 
 However, notice that otool -L will list all the dependencies that dylib invokes.
 
-### Manually parse cargo output on each platform? 
+### Manually parse cargo output on each platform?
 
 Isn't that really irritating to do?
 
 Yes.
 
 There are various solutions to parsing the output of cargo and pumping that
-into your build tool; included is a sample cmake (www.cmake.org) file to 
+into your build tool; included is a sample cmake (www.cmake.org) file to
 perform this task automatically.
 
 Notice that this step automatically invokes cargo to build the rust library.
@@ -69,32 +69,30 @@ Output:
 
 Note that the cmake script to parse this is literally parsing the raw string output
 from cargo. In theory cargo will (eventually) provide some kind of low level support
-for this. 
+for this.
 
 #### Building on windows?
 
 Um. Well, it does actually work, but you must use MSYS and GCC not
 visual studio. Here's a very quick getting started guide:
 
-- Install Rust nightly snapshot: http://www.rust-lang.org/install.html
+- Install Rust: http://www.rust-lang.org/install.html
 
-- Install MSYS: http://www.gaia-gis.it/spatialite-3.0.0-BETA/mingw64_how_to.html
-
-- Download the cargo nightly: https://github.com/rust-lang/cargo#installing-cargo-from-nightlies
-
-- Install cargo from the terminal using install.sh
+- Install MSYS: http://www.mingw.org/wiki/msys
 
 - Use the cmake "MSYS Makefiles" generator to build:
 
+Notice that you must use both the same version of rust and MSYS; ie. either
+32-bit or 64-bit for both. Notice that the default download for MSYS is 32-bit
+and the default for rust is 64-bit; ie. the default downloads for both are not
+compatible.
 
 From the MSYS shell:
 
-
-    cd build	
+    cd build
     cmake .. -G "MSYS Makefiles" (or use cmake-gui)
     make
     ./test.exe
-
 
 ### Output of test
 
@@ -110,5 +108,3 @@ From the MSYS shell:
     Trigger called
     Invoking callback
     C-callback invoked with value: 100
-
-woo... :P
