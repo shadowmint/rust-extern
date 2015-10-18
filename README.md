@@ -6,13 +6,13 @@ Example of an external static rust library called from C.
 
     cargo build -v
     cc -c test.c
-    cc -o test test.o lib/libexterntest-[BUILD].a -l[FLAGS]
+    cc -o test test.o target/libextern.a -l[FLAGS]
 
 The BUILD is dependent on your local build.
 
 The FLAGS will be listed when you run cargo build -v. For example, on OSX these are:
 
-     Running `rustc src/test.rs --crate-name externtest --crate-type dylib --crate-type staticlib -C metadata=bf68444529321665 -C extra-filename=-bf68444529321665 --out-dir /Users/doug/dev/rust-extern/target -L /Users/doug/dev/rust-extern/target -L /Users/doug/dev/rust-extern/target/deps`
+     Running `rustc src/test.rs --crate-name extern --crate-type dylib --crate-type staticlib -C metadata=bf68444529321665 -C extra-filename=-bf68444529321665 --out-dir /Users/doug/dev/rust-extern/target -L /Users/doug/dev/rust-extern/target -L /Users/doug/dev/rust-extern/target/deps`
         Compiling externtest v0.1.0 (file:/Users/doug/dev/rust-extern)
         warning: link against the following native artifacts when linking against this static library
         note: the order and any duplication can be significant on some platforms, and so may need to be preserved
@@ -23,15 +23,15 @@ The FLAGS will be listed when you run cargo build -v. For example, on OSX these 
 
 So you would run:
 
-    cc -o test test.o target/libexterntest-bf68444529321665.a -lSystem -lpthread -lc -lm
+    cc -o test test.o target/debug/libextern.a -lSystem -lpthread -lc -lm
 
 On an linux machine it might be:
 
-    cc -o test test.o libexterntest-47c19edaec6ef908.a -ldl -lpthread -lgcc_s -lc -m
+    cc -o test test.o target/debug/libextern.a -ldl -lpthread -lgcc_s -lc -m
 
 You can also dynamically link:
 
-    cc -o test test.o target/libexterntest-bf68444529321665.dylib
+    cc -o test test.o target/debug/extern.dylib
 
 However, notice that otool -L will list all the dependencies that dylib invokes.
 
@@ -57,7 +57,7 @@ Usage:
 Output:
 
     doug@wrang:rust-extern doug$ cmake ..
-    RUST LIBS: /home/doug/dev/rust-extern/target/libexterntest-47c19edaec6ef908.a
+    RUST LIBS: /home/doug/dev/rust-extern/target/libextern.a
     RUST DEPS: dl;pthread;gcc_s;pthread;c;m
     -- Configuring done
     -- Generating done
