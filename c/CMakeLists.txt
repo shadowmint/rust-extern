@@ -27,8 +27,12 @@ add_library(extern SHARED ${SOURCES})
 set_target_properties(extern PROPERTIES OUTPUT_NAME extern)
 set_target_properties(extern PROPERTIES BUILD_WITH_INSTALL_RPATH 1 INSTALL_NAME_DIR "@rpath")
 
+# Build library (static)
+add_library(extern_static STATIC ${SOURCES})
+
 ## Install rules
 if(NOT INSTALL_DIR)
   set(INSTALL_DIR ${CMAKE_CURRENT_BINARY_DIR}/release)
 endif()
 install(TARGETS extern DESTINATION "${INSTALL_DIR}")
+install(TARGETS extern_static DESTINATION "${INSTALL_DIR}")

@@ -10,6 +10,10 @@
 
 static void (*callback)(int value) = NULL;
 
+__EXT const char *rs_str(void) {
+  return "Hello World";
+}
+
 __EXT int rs_trigger(int val) {
   printf("Trigger called\n");
   if (val == 1) {

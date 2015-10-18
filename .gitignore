@@ -4,3 +4,4 @@ test
 .swp
 build
 Cargo.lock
+build_c

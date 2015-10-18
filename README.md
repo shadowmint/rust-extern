@@ -108,3 +108,23 @@ From the MSYS shell:
     Trigger called
     Invoking callback
     C-callback invoked with value: 100
+
+## C Fixture
+
+To ensure the C library compile step is working, a basic C implementation of
+libextern is provided in the `c` folder.
+
+To build:
+
+    mkdir build_c
+    cd build_c
+    cmake ..
+    make
+    make install
+
+For windows use 'cmake .. -G "MSYS Makefiles"'.
+
+Make sure to run make install to generate the correct version of the dynamic
+library.
+
+You can now modify the CMakeList.txt file to use the c version of the code.
