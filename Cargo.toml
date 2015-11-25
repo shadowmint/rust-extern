@@ -7,3 +7,6 @@ authors = [ "douglas.linder@gmail.com" ]
 name = "extern"
 path = "src/test.rs"
 crate-type = ["dylib", "staticlib"]
+
+[dependencies]
+libc = "*"
